@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserLogin } from '../model/userLogin';
 import { Usuario } from '../model/usuario';
 
@@ -10,11 +11,31 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  logar(userLogin: UserLogin){
-      return this.http.post('http://localhost:8080/usuarios/logar', userLogin)
+  logar(userLogin: UserLogin) : Observable<UserLogin>{
+      return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar', userLogin)
   }
 
-  cadastrar(user: Usuario){
-    return this.http.post('http://localhost:8080/usuarios/cadastrar', user)
+  cadastrar(user: Usuario) : Observable<Usuario>{
+    return this.http.post<Usuario>('http://localhost:8080/usuarios/cadastrar', user)
+  }
+
+  btnSair(){
+    let ok = false
+    let token = localStorage.getItem('token')
+    if (token != null){
+      ok = true
+    }
+    return ok 
+  }
+
+  btnLogin(){
+    let ok = false
+    let token = localStorage.getItem('token')
+    
+    if (token == null){
+      ok = true
+    }
+    return ok 
+
   }
 }
