@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms';
+import { OrderModule} from 'ngx-order-pipe';
+import { PostTemaComponent } from './post-tema/post-tema.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,9 @@ import {FormsModule} from '@angular/forms';
     FeedComponent,
     PerfilLateralComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    OrderModule,
+    PostTemaComponent
   ],
   imports: [
     BrowserModule,
