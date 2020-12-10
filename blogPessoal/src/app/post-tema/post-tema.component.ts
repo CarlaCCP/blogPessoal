@@ -11,12 +11,11 @@ import { TemaService } from '../service/tema.service';
 export class PostTemaComponent implements OnInit {
   
   tema: Tema = new Tema()
-  listaTemas!: Tema[]
+  listaTemas: Tema[]
   constructor(private temaService: TemaService, private router: Router) { }
 
   ngOnInit() {
     this.findAllTemas()
-    this.findByIdTema()
   }
 
   findAllTemas(){

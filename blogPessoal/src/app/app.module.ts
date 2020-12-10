@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms';
-import { OrderModule} from 'ngx-order-pipe';
+
 import { PostTemaComponent } from './post-tema/post-tema.component';
 
 @NgModule({
@@ -26,7 +26,6 @@ import { PostTemaComponent } from './post-tema/post-tema.component';
     PerfilLateralComponent,
     LoginComponent,
     CadastroComponent,
-    OrderModule,
     PostTemaComponent
   ],
   imports: [
@@ -35,6 +34,7 @@ import { PostTemaComponent } from './post-tema/post-tema.component';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

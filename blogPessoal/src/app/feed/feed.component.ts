@@ -13,12 +13,16 @@ export class FeedComponent implements OnInit {
   
   key =  'data'
   reverse = true
-  idTema!: number
-  postagem: Postagem = new Postagem()
-  listaPostagens!: Postagem[]
-  tema: Tema = new Tema()
-  listaTemas!: Tema[]
 
+  tema: Tema = new Tema()
+  idTema: number
+  listaTemas: Tema[]
+
+
+  postagem: Postagem = new Postagem()
+  listaPostagens: Postagem[]
+  
+  
   constructor(private postagemService: PostagemService,
     private temaService: TemaService) { }
 

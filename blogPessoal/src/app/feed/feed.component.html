@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-md-8">
-            <h3 class="text-center text-monospace">
+            <h3 class="text-center mb-4 text-monospace">
                 Como Tem sido a minha experiência na Generation?
             </h3>
 
@@ -14,8 +14,8 @@
 
                 <label class="text-monospace" for="titulo">Título:</label>
                 <input type="text" class="form-control" id="titulo" placeholder="Digite aqui o seu titulo" [(ngModel)] = 'postagem.titulo'>
-
             </div>
+
             <div class="form-group">
 
                 <label class="text-monospace" for="texto">Texto:</label>
@@ -26,7 +26,7 @@
             <div class="row d-flex align-items-end">
                 <div class="col-md-6">
                     <div class="form-group m-0">
-                        <label class="text-monospace" for="">Escolha um tema ou <a routerLink="/cadastrar-tema">Cadastre
+                        <label class="text-monospace" for="tema">Escolha um tema ou <a routerLink="/cadastro-tema">Cadastre
                                 um novo</a></label>
                         <select name="tema" id="tema" class="form-control" [(ngModel)]= 'idTema' (change)= 'findByIdTema()'> 
                             <option *ngFor='let item of listaTemas' value={{item.id}}>
@@ -66,7 +66,7 @@
                                                 <!--Botão de apagar e editar por tema-->
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card mt-5 mb-5"  *ngFor='let item of listaPostagens | orderBy : key : reverse'>
+                            <div class="card mt-5 mb-5"  *ngFor='let item of listaPostagens'>
                                 <div class="card-header">
                                 <div class="row d-flex align-items-center">
                                     <div class="col-md-8">
