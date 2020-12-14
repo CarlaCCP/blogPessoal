@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Postagem } from '../model/postagem';
 import { Tema } from '../model/tema';
+import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -22,9 +23,11 @@ export class FeedComponent implements OnInit {
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
   
-  
+  titulo: string
+  nome: string
   constructor(private postagemService: PostagemService,
-    private temaService: TemaService) { }
+    private temaService: TemaService,
+    private alert: AlertasService) { }
 
   ngOnInit() {
     window.scroll(0,0)
@@ -49,17 +52,37 @@ export class FeedComponent implements OnInit {
     })
   }
 
+  findByTituloPostagem(){
+    if(this.titulo === ''){
+      this.findAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp: Postagem[])=>{
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByNomeTema(){
+    if(this.nome === ''){
+      this.findAllTemas()
+    } else {
+      this.temaService.getByNomeTema(this.nome).subscribe((resp: Tema[])=>{
+        this.listaTemas = resp
+      })
+    }
+  }
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
     if(this.postagem.titulo == null || this.postagem.texto == null || this.postagem.tema == null){
-      alert('Preencha todos os campos antes de publicar')
+      this.alert.showAlertDanger('Preencha todos os campos antes de publicar')
     } else {
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=>{
         this.postagem = resp
         this.postagem = new Postagem()
-        alert('Postagem realizada com sucesso!')
+        this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllPostagens()
       })
     }
